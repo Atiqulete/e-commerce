@@ -1,0 +1,45 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Catregory</th>
+            <th scope="col">Old Price</th>
+            <th scope="col">New Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in product_show %}
+          <tr>
+            <th scope="row">{{i.id}}</th>
+            <td><a href="{% url 'product_details' i.id %}">{{i.product_name}}</a></td>
+            <td>{{i.product_category.category_name}}</td>
+            <td>{{i.product_old_price}}</td>
+            <td>{{i.product_new_price}}</td>
+            <td><img src="/media/{{i.prod.first.product_Image_all}}" alt="" style="width: 100px;height: 100px;"></td>
+            <td ><a href="{% url 'pro_info_edit' i.id %}" style="color: #000;">Edit</a>||<a href="{% url 'delete_pro' i.id %}" style="color: #000;">Delete</a></td>
+          </tr>
+           {% endfor %}
+        </tbody>  
+      </table>
+    </div>
+  </div>
+</div> 
+</div>
+</div>
+{% endblock %}

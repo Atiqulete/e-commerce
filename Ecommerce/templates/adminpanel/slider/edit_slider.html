@@ -1,0 +1,46 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+      <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+        <div class="row">
+          <div class="col-md-4">
+            {% for i in edit_info %}
+            <form method="POST" action="{% url 'update_slider' i.id %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Discount</label>
+                <input type="text" class="form-control" value="{{i.discount}}" name="discount" id="exampleInputEmail1"
+                  aria-describedby="emailHelp" placeholder="Insert a Title">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+                <input type="text" class="form-control" value="{{i.description}}" name="description" id="exampleInputPassword1"
+                  placeholder="Insert a Description">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Image</label>
+                <input type="file" class="form-control" name="img" id="exampleInputPassword1">
+                <img src="/media/{{i.image}}" alt="" style="width: 100px;height: 100px;">
+                <input type="text" name="img_1" value="{{i.image}}" hidden>
+              </div>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            {% endfor %}
+          </div> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

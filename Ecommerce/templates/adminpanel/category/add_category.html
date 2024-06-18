@@ -1,0 +1,33 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+      <form method="POST" action="{% url 'add_category' %}" enctype="multipart/form-data" >
+        {% csrf_token%}
+        <div class="mb-3">
+          <label for="cat_name" class="form-label" style="color: black;">Category Name</label>
+          <input type="text" name="cat_name" class="form-control" id="cat_name" aria-describedby="emailHelp" placeholder="Insert Ctegory Name">
+        </div>
+        <div class="mb-3">
+          <label for="cat_pic" class="form-label" style="color: black;">Category Image</label>
+          <input type="file" name="cat_img" class="form-control" id="cat_pic">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% load sweetify %}
+{% sweetify %}
+{% endblock %}

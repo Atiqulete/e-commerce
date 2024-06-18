@@ -1,0 +1,38 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+        {% for i in product_show %}
+        <h3 class="text-center">{{i.product_name}}</h3>
+        <h4 class="text-center">{{i.product_category.category_name}}</h4>
+         <div class="row">
+
+            <div class="col-md-6">
+                <p class="text-center" style="font-weight: bold;"><span style="color: crimson;"> Old Price: </span>{{i.product_old_price}}</p>
+            </div>
+
+            <div class="col-md-6">
+                <p class="text-center" style="font-weight: bold;"><span style="color: rgb(0, 225, 255);"> New Price: </span>{{i.product_new_price}}</p>
+            </div>
+            <p class="text-center">
+             {% for j in i.prod.all %}
+             <img class="img-thumbnail" src="/media/{{j.product_Image_all}}" alt="" style="width: 250px;height: 250px;"></td>
+             {% endfor %}
+            </p>
+         </div>
+        {% endfor %}
+    </div>
+  </div>
+</div> 
+</div>
+</div>
+{% endblock %}

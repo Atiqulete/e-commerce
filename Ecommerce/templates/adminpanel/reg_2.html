@@ -1,0 +1,64 @@
+{% extends 'adminpanel/admin_base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="midde_cont">
+    <div class="container-fluid">
+       <div class="row column_title">
+          <div class="col-md-12">
+             <div class="page_title">
+                <h2>Dashboard</h2>
+             </div>
+          </div>
+          <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+            <div class="row">
+              <div class="col-md-12">
+               <div class="login_form">
+                  <form method="POST" action="{% url 'reg_page' %}" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <fieldset>
+                        <div class="field">
+                           <label class="label_field">User Name</label>
+                           <input type="text" name="name" placeholder="User Name" />
+                        </div>
+                        <div class="field">
+                         <label class="label_field">Email Address</label>
+                         <input type="email" name="email" placeholder="E-mail" />
+                         </div>
+                        <div class="field">
+                           <label class="label_field">Password</label>
+                           <input type="password" name="password" placeholder="Password" />
+                        </div>
+                        <div class="field">
+                         <label class="label_field">Re Password</label>
+                         <input type="password" name="password_2" placeholder="Password" />
+                        </div>
+
+                        <div class="field">
+                           <label class="label_field">User Type</label>
+                           <select name="user_type" id="">
+                              <option value="" disabled selected>Select One</option>
+                              {% for i in user_type %}
+                              <option value="{{i.id}}"> {{i.type_name}} </option>
+                              {% endfor %}
+                           </select>
+                        </div>
+
+                        <div class="field margin_0">
+                           <label class="label_field hidden">hidden label</label>
+                           <button class="main_bt">Sing Up</button>
+                        </div>
+                     </fieldset>
+                  </form>
+               </div>
+              </div>
+            </div>
+          </div>
+       </div>
+       <!-- end dashboard inner -->
+</div>
+</div>
+</div>
+{% endblock %}

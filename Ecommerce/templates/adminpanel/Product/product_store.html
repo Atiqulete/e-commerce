@@ -1,0 +1,50 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+      <form method="POST" action="{% url 'product_store' %}" enctype="multipart/form-data" >
+        {% csrf_token%}
+        <div class="mb-3">
+          <label for="product_name" class="form-label" style="color: black;">Product Name</label>
+          <input type="text" name="product_name" class="form-control" id="product_name" aria-describedby="emailHelp" placeholder="Insert product Name">
+
+        </div>
+        <div class="mb-3">
+          <label for="product_old_price" class="form-label" style="color: black;">Product Old Price</label>
+          <input type="number" name="product_old_price" class="form-control" id="product_old_price" aria-describedby="emailHelp" placeholder="Insert product old price">
+        </div>
+        <div class="mb-3">
+          <label for="product_new_price" class="form-label" style="color: black;">Product New Price</label>
+          <input type="number" name="product_new_price" class="form-control" id="product_new_price" aria-describedby="emailHelp" placeholder="Insert product new price">
+
+        </div>
+        <div class="mb-3">
+          <label for="product_cat" class="form-label" style="color: black;">Product Category</label>
+          <select class="form-control" name="product_cat" id="product_cat">
+              <option value="" disabled selected>Select An Option</option>
+              {% for i in cat_name %}
+              <option value="{{i.id}}">{{i.category_name}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="product_pic" class="form-label" style="color: black;">Category Image</label>
+          <input type="file" name="product_pic" class="form-control" id="product_pic" multiple>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}

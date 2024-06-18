@@ -1,0 +1,42 @@
+{% extends 'adminpanel/admin_base.html' %}
+{% load static %}
+{% block content %}
+<div class="midde_cont">
+  <div class="container-fluid">
+    <div class="row column_title">
+      <div class="col-md-12">
+        <div class="page_title">
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+    </div>
+    <div class="container " style="border: solid black;padding: 30px;margin-top: 30px;border-radius: 6px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Catregory Name</th>
+            <th scope="col">Catregory Image</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in category_show %}
+          <tr>
+            <th scope="row">{{i.id}}</th>
+            <td>{{i.category_name}}</td>
+            <td><img src="/media/{{i.category_img}}" alt="" style="width: 100px;height: 100px;"></td>
+            <td ><a href="{% url 'cat_info_edit' i.id %}" style="color: #000;">Edit</a>||
+                <a href="{% url 'cat_delete' i.id %}" style="color: #000;">Delete</a></td>
+          </tr>
+           {% endfor %}
+        </tbody>  
+      </table>
+    </div>
+  </div>
+</div> 
+</div>
+</div>
+{% load sweetify %}
+{% sweetify %}
+{% endblock %}
